@@ -1,0 +1,50 @@
+f[x_] := E^(-x^2)
+
+x0 = 0;
+
+P1[x_] = Normal[Series[f[x], {x, x0, 1}]]
+
+P5[x_] = Normal[Series[f[x], {x, x0, 5}]]
+
+P10[x_] = Normal[Series[f[x], {x, x0, 10}]]
+
+Plot[{f[x], P1[x], P5[x], P10[x]}, {x, -5, 5}, PlotRange -> {0, 1.2}, 
+ PlotLegends -> "Expressions"]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ f[x_] := Sin[2 x] - Sin[x] + 0.5 x + 0.25
+f[-Pi]
+f[0]
+FindRoot[f[x], {x, 0}]
+FindRoot[f[x], {x, -Pi/2}]
+g[x] = f'[x]
+
+
+
+
+
+
+
+
+a = -1;
+b = 0;
+c = 0;
+TOL = 10^-5;
+f[x_] = 2 x*Cos[2*x] - (x + 1)^2;
+
+For[i = 0, i <= 17, i++,
+ c = (a + b) / 2;
+ Print["N:", i, " A:", a, " B:", b, " C: ", c];
+ If[(f[c] == 0) or (((b - a) / 2 ) <= TOL), Print[c]; Break[]];
+ If[Sign[f[c]] == Sign[f[a]], a = c, b = c];
+ ]
+ 
+ 
