@@ -20,12 +20,16 @@ Plot[{f[x], P1[x], P5[x], P10[x]}, {x, -5, 5}, PlotRange -> {0, 1.2},
  
  
  
- f[x_] := Sin[2 x] - Sin[x] + 0.5 x + 0.25
-f[-Pi]
-f[0]
+f[x_] := Sin[2 x] - Sin[x] + 0.5 x + 0.25
+up[x_] := 0.5 x + 2.25;
+down[x_] := 0.5 x - 1.75;
+Plot[{f[x], up[x], down[x]}, {x, -5, 5}, PlotRange -> {-1, 1}, 
+ PlotLegends -> "Expressions"]
+FindRoot[f[x], {x, -3}]
+FindRoot[f[x], {x, -1.5}]
 FindRoot[f[x], {x, 0}]
-FindRoot[f[x], {x, -Pi/2}]
-g[x] = f'[x]
+FindRoot[f[x], {x, 1.75}]
+FindRoot[f[x], {x, 2.25}]
 
 
 
