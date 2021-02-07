@@ -55,4 +55,16 @@ For[i = 0, i <= 17, i++,
  If[Sign[f[c]] == Sign[f[a]], a = c, b = c];
  ]
  
+ (*Roberto Edde*)
+ 
+a = -1;
+b = 0;
+c = 0;
+TOL = 10^-5;
+f[x_] = 2 *x*Cos[2*x] - (x + 1)^2;
+
+For[i = 0, i <= 17, i++, c = (a*f[b] - b*f[a])/(f[b] - f[a]);
+  Print["N:", i, " A:", a, " B:", b, " C: ", c];
+  If[(Abs[c - b] < TOL), Print[c]; Break[]];
+  If[f[c]*f[b] < 0, a = b];];
  
