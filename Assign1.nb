@@ -1,5 +1,6 @@
 (*William Nebinger*)
 (* 1. *)
+Print[1.];
 f[x_] := E^(-x^2)
 
 x0 = 0;
@@ -24,6 +25,7 @@ Plot[{f[x], P1[x], P5[x], P10[x]}, {x, -5, 5}, PlotRange -> {0, 1.2},
  (* To know that I had all the real solutions, I used the fact that Sin(2x) - Sin(x) was at least -2 and at most 2.
  I used this information to determine that all the real solutions would be on the interval [-4, 4]. 
  I then used a graph to look at the solutions and used the information I obtained to get inputs to the FindRoot function*)
+ Print[2.];
 f[x_] := Sin[2 x] - Sin[x] + 0.5 x + 0.25
 up[x_] := 0.5 x + 2.25;
 down[x_] := 0.5 x - 1.75;
@@ -42,6 +44,7 @@ FindRoot[f[x], {x, 2.25}]
 
 
 (*William Nebinger*)
+Print[3.];
 a = -1;
 b = 0;
 c = 0;
@@ -56,7 +59,7 @@ For[i = 0, i <= 17, i++,
  ]
  
  (*Roberto Edde*)
- 
+ Print[4.];
 a = -1.0;
 b = 0.0;
 c = 0.0;
@@ -74,3 +77,26 @@ For[i = 0, i <= 50, i++,
  If[Sign[f[a]] == Sign[c], a = c, b = c];
  ]
  
+ (*Katelyn Ryan*)
+ (*Both algorithms would produce the same result if exact arithmetic because the numbers go on indefinitely. 
+In the first one, it requires the computer to store the number, and the computer can only store so much data.
+Each time the decimal goes through an iteration it is getting cut, resulting in inaccuracies. 
+In the second one, it is not storing a number on each iteration just multiplying to form a new number not build off the previous one.. 
+The difference in how its being computed can lead to rounding differences, thus leading to different data.
+I would prefer the second algorithm because it doesn't build off the previous one.
+It is newly generated each time leading to less chances for machine rounding to effect the number. *)
+
+Print[5.];
+n = 7;
+h = 1.0/n;
+x = 0.0;
+
+For[i = 1, i < n, i++,
+  x = 1.0 * Round[x + h, 10^-10];
+ 	y1 = SetPrecision[Cos[x], 10];
+ 	Print["N = ", i];
+ 	Print["(x1,y1) = (", x, ", ", y1, ")"];
+ 	x2 = 1.0 * Round[i*h, 10^-10];
+ 	y2 = SetPrecision[Cos[x2], 10];
+ 	Print["(x2,y2) = (", x2, ", ", y2, ")"];
+ ]
