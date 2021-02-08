@@ -56,3 +56,22 @@ For[i = 0, i <= 17, i++,
  ]
  
  
+ 
+ (*Roberto Edde*)
+a = -1.0;
+b = 0.0;
+c = 0.0;
+TOL = 0.00001;
+f[x_] := 2*x*Cos[2*x] - (x + 1)^2
+For[i = 0, i <= 20, i++, m = (f[b] - f[a])/(b - a);
+ yinc = f[b] - m*b;
+ firstC = -(yinc/m);
+ secondC = (a*f[b] - b*f[a])/(f[b] - f[a]);
+ Print["N: ", i, " A: ", a, " B: ", b, " C1: ", firstC, " C2: ", 
+  secondC];
+ c = firstC;
+ If[Abs[c - b] < TOL, 
+  Print["Done Zero at C = ", c, " f(c) = ", f[c], " N: ", i]; Break[]];
+ If[Sign[f[a]] == Sign[f[c]], a = c, b = c];]
+ 
+ 
