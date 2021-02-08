@@ -59,6 +59,7 @@ For[i = 0, i <= 17, i++,
  ]
  
  (*Roberto Edde*)
+ (*By replacing the c from problem 3 there are going to be required aroung 7 steps to obtain a tolerance of 10^-5*)
  Print[4.];
 a = -1.0;
 b = 0.0;
